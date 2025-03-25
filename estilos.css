@@ -1,0 +1,138 @@
+*,  ::before,  ::after{
+    margin: 0;
+    box-sizing: border-box;
+}
+    
+body{
+background-color:   #ff0edfee;
+font-family: Arial;
+color: white;
+
+}
+
+.game{ 
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    gap: 1rem;
+    place-content: center;
+}
+
+.game_board{
+
+width: 300px;
+height: 300px;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows: 1fr 1fr 1fr;
+}
+
+.cell{
+width: 100%;
+height: 100%;
+border: 2px solid #fff;
+display: grid;
+place-items: center;
+cursor: pointer;
+grid-template-areas: "draw";
+}
+
+
+.circle::after{
+content: "";
+grid-area: draw;
+display: block;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+border: 10px solid white;
+animation: show .3s;
+
+}
+
+.cross::after{
+content: "";
+grid-area: draw;
+display: block;
+width: 10px;
+height: 70px;
+background-color: white;
+transform: rotate(45deg);
+border-radius: 10px;      
+animation: show-reverse .3s;
+}
+
+.cross::before{
+content: "";
+grid-area: draw;
+display: block;
+width: 10px;
+height: 70px;
+background-color: white;
+transform: rotate(-45deg);
+border-radius: 10px;      
+animation: show .3s;
+}
+
+
+@keyframes show {
+0%{
+    transform: scale(0) rotate(-45deg);
+}
+100%{
+    transform: scale(1) rotate(-45deg);
+}
+}
+
+
+@keyframes show-reverse {
+    0%{
+        transform: scale(0) rotate(45deg);
+    }
+    100%{
+        transform: scale(1) rotate(45deg);
+    }
+}
+
+
+
+.endgame{
+    background-color: black;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+
+    display: grid;
+    place-content: center;
+
+}  
+
+
+.endgame_show{
+display: grid;
+gap: 1rem;
+text-align: center;
+
+}
+
+
+.endgame_button{
+    background-color: rgb(13, 162, 221);
+    font-weight: bold;
+    color: beige;
+    padding: 1rem 2rem;
+    margin: 0 auto;
+    width: max-content;
+    border: none;
+    border-radius: 100px;
+
+}
+
+
+.show{
+   opacity: 1;
+   pointer-events: unset;
+
+}
